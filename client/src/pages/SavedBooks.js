@@ -11,7 +11,7 @@ const SavedBooks = () => {
   const [removeBook] = useMutation(REMOVE_BOOK);
 
   const userData = data?.me || {};
-  
+
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -24,17 +24,17 @@ const SavedBooks = () => {
       await removeBook({
         variables:{ bookId }
       });
-      
+
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
 
+
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
